@@ -13,29 +13,52 @@ export default class extends React.Component {
 	    const filmsRes = await axios.get('https://ghibliapi.herokuapp.com/films');
 	    const peopleRes = await axios.get('https://ghibliapi.herokuapp.com/people');
 	    const locationsRes = await axios.get('https://ghibliapi.herokuapp.com/locations');
+	    const speciesRes = await axios.get('https://ghibliapi.herokuapp.com/species');
 	    const vehiclesRes = await axios.get('https://ghibliapi.herokuapp.com/vehicles');
 
 	    return {people: peopleRes.data,
 	    		films: filmsRes.data,
 	    		locations: locationsRes.data,
+	    		species: speciesRes.data,
 	    		vehicles: vehiclesRes.data};
 	  }
       render() {
-      	const films = this.props.films
-      	const people = this.props.people
-      	const locations = this.props.locations
-      	const vehicles = this.props.vehicles
+      	const films = this.props.films;
+      	const people = this.props.people;
+      	const locations = this.props.locations;
+      	const species = this.props.species;
+      	const vehicles = this.props.vehicles;
 
-      	let propsArr = films.concat(people, locations, vehicles)
+      	let propsArr = films.concat(people, locations, vehicles);
       	let featuredItem = propsArr[Math.floor(Math.random()*propsArr.length)];
-      	console.log(featuredItem)
+      	console.log(featuredItem);
+
+      	let featuredItemDisplay= null;
+
+      	if ('director' in featuredItem) { // film
+			featuredItemDisplay =  <p>{featuredItem.director}</p>
+		}
+		else if ('gender' in featuredItem) { // people
+			featuredItemDisplay =  <p>{featuredItem.gender}</p>
+		}
+		else if ('classification' in featuredItem) { // species
+			featuredItemDisplay =  <p>{featuredItem.classification}</p>
+		}
+		else if ('pilot' in featuredItem) { // vehicles
+			featuredItemDisplay =  <p>{featuredItem.pilot}</p>
+		}
+		else if ('classification' in featuredItem) { // species
+			featuredItemDisplay =  <p>{featuredItem.pilot}</p>
+		}
         return (
         	<div>
         	<PageHead />
         	<Nav />
         	<div>
-        	<p>Featured Item</p>
-
+        	<h3>Featured Item</h3>
+        	
+        		{featuredItemDisplay}
+        	
         	</div> 
 
         	    <FilmDiv />
