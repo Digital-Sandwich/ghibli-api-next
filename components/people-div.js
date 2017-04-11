@@ -12,6 +12,8 @@ export default class PeopleDiv extends React.Component {
 			backgroundColor: '#E1E2E1',
 			border: '1px solid #F5F5F6',
 			textAlign: 'center',
+			borderRadius: '25px',
+			height: '5em'
 		 };
 
        	 const divPosition = {

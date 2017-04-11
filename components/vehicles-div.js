@@ -3,10 +3,10 @@ import Link from 'next/link';
 import Router from 'next/router';
 
 const handler = () => Router.push({
-  pathname: '/films',
+  pathname: '/vehicles',
 });
 
-export default class FilmDiv extends React.Component {
+export default class VehiclesDiv extends React.Component {
 	render(){
 		const style = {
 			backgroundColor: '#E1E2E1',
@@ -16,11 +16,9 @@ export default class FilmDiv extends React.Component {
 			height: '5em'
 		 };
     	return(
-	     	<div className='film-link-div' onClick={handler} style={style}>
-	     		<a>Films</a>
+	     	<div className='vehicles-link-div' onClick={handler} style={style}>
+	     		<a>Vehicles</a>
 	     	</div>
-
-
         );
     }
  }
