@@ -9,8 +9,8 @@ export default class Nav extends React.Component {
   	}
 
   	let divStyle = {
-  		paddingBottom: '2em'
-
+  		paddingBottom: '2em',
+  		border: '2px solid #519657'
   	}
 
     return (
@@ -30,6 +30,18 @@ export default class Nav extends React.Component {
 			<div className='nav-link' style={linkStyle}>
 	    	<Link href='/people'>
 	      		<a>People</a>
+	    	</Link>
+	    	</div>
+
+			<div className='nav-link' style={linkStyle}>
+	    	<Link href='/locations'>
+	      		<a>Location</a>
+	    	</Link>
+	    	</div>
+
+			<div className='nav-link' style={linkStyle}>
+	    	<Link href='/vehicles'>
+	      		<a>Vehicles</a>
 	    	</Link>
 	    	</div>
 	  </div>

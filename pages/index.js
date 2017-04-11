@@ -9,35 +9,34 @@ import VehiclesDiv from '../components/vehicles-div';
 import Link from 'next/link';
 
 export default class extends React.Component {
-    static async getInitialProps () {
-        const filmsRes = await axios.get('https://ghibliapi.herokuapp.com/films');
-        const peopleRes = await axios.get('https://ghibliapi.herokuapp.com/people');
-        const locationsRes = await axios.get('https://ghibliapi.herokuapp.com/locations');
-        const vehiclesRes = await axios.get('https://ghibliapi.herokuapp.com/vehicles');
+	static async getInitialProps () {
+	    const filmsRes = await axios.get('https://ghibliapi.herokuapp.com/films');
+	    const peopleRes = await axios.get('https://ghibliapi.herokuapp.com/people');
+	    const locationsRes = await axios.get('https://ghibliapi.herokuapp.com/locations');
+	    const vehiclesRes = await axios.get('https://ghibliapi.herokuapp.com/vehicles');
 
-        return {people: peopleRes.data,
-        		films: filmsRes.data,
-        		locations: locationsRes.data,
-        		vehicles: vehiclesRes.data};
-      }
+	    return {people: peopleRes.data,
+	    		films: filmsRes.data,
+	    		locations: locationsRes.data,
+	    		vehicles: vehiclesRes.data};
+	  }
       render() {
+      	const films = this.props.films
+      	const people = this.props.people
+      	const locations = this.props.locations
+      	const vehicles = this.props.vehicles
 
-      	const tableStyle = {
-	  		backgroundColor: '#E1E2E1',
-	  		border: '1px solid #F5F5F6',
-	  		textAlign: 'center',
-      	 };
-
-      	 const divPosition = {
-	      	marginLeft: '0 auto',
-	      	marginRight: '0 auto',
-	      	width: '200px',
-      	  };
-
+      	let propsArr = films.concat(people, locations, vehicles)
+      	let featuredItem = propsArr[Math.floor(Math.random()*propsArr.length)];
+      	console.log(featuredItem)
         return (
         	<div>
         	<PageHead />
         	<Nav />
+        	<div>
+        	<p>Featured Item</p>
+
+        	</div> 
 
         	    <FilmDiv />
 
@@ -51,5 +50,3 @@ export default class extends React.Component {
         )
       }
  }
-
-

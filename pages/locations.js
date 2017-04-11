@@ -12,6 +12,7 @@ export default class extends React.Component {
 	    
 	  }
       render() {
+      	console.log(this.props.locations)
 
 	      	const tableStyle = {
 		  		backgroundColor: '#E1E2E1',
