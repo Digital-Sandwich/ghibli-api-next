@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import Ghibli from '../data/ghibli';
 import PageHead from '../components/head';
 import Nav from '../components/nav';
 import FilmDiv from '../components/film-div';
