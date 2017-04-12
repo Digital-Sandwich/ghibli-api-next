@@ -3,10 +3,10 @@ import Link from 'next/link';
 import Router from 'next/router';
 
 const handler = () => Router.push({
-  pathname: '/people',
+  pathname: '/species',
 });
 
-export default class PeopleDiv extends React.Component {
+export default class SpeciesDiv extends React.Component {
 	render(){
 		const style = {
 			backgroundColor: '#E1E2E1',
@@ -15,13 +15,9 @@ export default class PeopleDiv extends React.Component {
 			borderRadius: '25px',
 			height: '5em'
 		 };
-       	 const divPosition = {
- 	      	marginLeft: '0 auto',
- 	      	marginRight: '0 auto',
-       	  };
     	return(
-	     	<div className='people-link-div' onClick={handler} style={style}>
-	     		<a>People</a>
+	     	<div className='species-link-div' onClick={handler} style={style}>
+	     		<a>Species</a>
 	     	</div>
         );
     }

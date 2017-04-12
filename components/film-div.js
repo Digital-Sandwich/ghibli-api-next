@@ -19,8 +19,6 @@ export default class FilmDiv extends React.Component {
 	     	<div className='film-link-div' onClick={handler} style={style}>
 	     		<a>Films</a>
 	     	</div>
-
-
         );
     }
  }

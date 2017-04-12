@@ -6,13 +6,12 @@ export default class Nav extends React.Component {
 		textAlign: 'left',
 		float: 'left',
 		paddingRight: '1em',
-  	}
+  	};
 
   	let divStyle = {
   		paddingBottom: '2em',
   		border: '2px solid #519657'
-  	}
-
+  	};
     return (
 		<div style={divStyle}>
 			<div className='nav-link' style={linkStyle}>

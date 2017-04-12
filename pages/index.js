@@ -1,3 +1,10 @@
+/*TO DO
+-create species div
+-create species page
+-display all properties of featured item
+-display properties of item when clicked
+/TO DO */
+
 import React from 'react';
 import axios from 'axios';
 import PageHead from '../components/head';
@@ -5,6 +12,7 @@ import Nav from '../components/nav';
 import FilmDiv from '../components/film-div';
 import PeopleDiv from '../components/people-div';
 import LocationsDiv from '../components/locations-div';
+import SpeciesDiv from '../components/species-div';
 import VehiclesDiv from '../components/vehicles-div';
 import Link from 'next/link';
 
@@ -16,8 +24,8 @@ export default class extends React.Component {
 	    const speciesRes = await axios.get('https://ghibliapi.herokuapp.com/species');
 	    const vehiclesRes = await axios.get('https://ghibliapi.herokuapp.com/vehicles');
 
-	    return {people: peopleRes.data,
-	    		films: filmsRes.data,
+	    return {films: filmsRes.data,
+	    		people: peopleRes.data,
 	    		locations: locationsRes.data,
 	    		species: speciesRes.data,
 	    		vehicles: vehiclesRes.data};
@@ -41,35 +49,32 @@ export default class extends React.Component {
 		else if ('gender' in featuredItem) { // people
 			featuredItemDisplay =  <p>{featuredItem.gender}</p>
 		}
+		else if ('climate' in featuredItem) { // location
+			featuredItemDisplay =  <p>{featuredItem.climate}</p>
+		}
 		else if ('classification' in featuredItem) { // species
-			featuredItemDisplay =  <p>{featuredItem.classification}</p>
+			featuredItemDisplay =  <p>{featuredItem.pilot}</p>
 		}
 		else if ('pilot' in featuredItem) { // vehicles
 			featuredItemDisplay =  <p>{featuredItem.pilot}</p>
 		}
-		else if ('classification' in featuredItem) { // species
-			featuredItemDisplay =  <p>{featuredItem.pilot}</p>
-		}
+	
         return (
-        	<div>
-        	<PageHead />
-        	<Nav />
-        	<div>
-        	<h3>Featured Item</h3>
-        	
-        		{featuredItemDisplay}
-        	
-        	</div> 
-
-        	    <FilmDiv />
-
-        	    <PeopleDiv />
-
-        	    <LocationsDiv />
-
-        	    <VehiclesDiv />
-
-            </div>
+	    	<div>
+	    		<PageHead />
+	    		<Nav />
+	    		<div>
+	    			<h3>Featured Item</h3>
+	    	
+	    			{featuredItemDisplay}
+	    	
+	    		</div> 
+	    	    <FilmDiv />
+	    	    <PeopleDiv />
+	    	    <LocationsDiv />
+	    	    <SpeciesDiv />
+	    	    <VehiclesDiv />
+	        </div>
         )
       }
  }

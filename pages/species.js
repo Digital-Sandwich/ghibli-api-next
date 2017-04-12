@@ -6,8 +6,8 @@ import Nav from '../components/nav';
 
 export default class extends React.Component {
 	static async getInitialProps () {
-	    const peopleRes = await axios.get('https://ghibliapi.herokuapp.com/people');
-	    return {people: peopleRes.data,};
+	    const speciesRes = await axios.get('https://ghibliapi.herokuapp.com/species');
+	    return {species: speciesRes.data,};
 	  }
       render() {
 	      	const tableStyle = {
@@ -24,7 +24,7 @@ export default class extends React.Component {
         	<div>
         	<PageHead />
         	<Nav />
-        	<div className='people-list' style={tableStyle, divPosition}>
+        	<div className='speceis-list' style={tableStyle, divPosition}>
         		<table className='data-table' style={divPosition, tableStyle}>
         	    	<thead>
         	          <tr>
@@ -33,9 +33,9 @@ export default class extends React.Component {
         	        </thead>
         	        <tbody>
         	          {
-        	            this.props.people.map( (person, i) => (
+        	            this.props.species.map( (species, i) => (
         	            	<tr key={i}>
-        	                    <td><Link href='/people'><a>{ person.name }</a></Link></td>
+        	            	<td><a>{ species.name }</a></td>
         	                </tr>
         	              ))
         	          }

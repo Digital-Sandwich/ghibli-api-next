@@ -19,8 +19,6 @@ export default class LocationsDiv extends React.Component {
 	     	<div className='locations-link-div' onClick={handler} style={style}>
 	     		<a>Locations</a>
 	     	</div>
-
-
         );
     }
  }
