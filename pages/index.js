@@ -1,6 +1,4 @@
 /*TO DO
--create species div
--create species page
 -display all properties of featured item
 -display properties of item when clicked
 /TO DO */
@@ -31,6 +29,19 @@ export default class extends React.Component {
 	    		vehicles: vehiclesRes.data};
 	  }
       render() {
+      	const featuredItemDivStyle = {
+      		backgroundColor: '#a5d6a7',
+			border: '1px solid #F5F5F6',
+			textAlign: 'center',
+			verticalAlign: 'middle',
+			lineHeight: '1.7em',
+			borderRadius: '25px',
+			height: 'auto',
+      	};
+      	const ulNoBullets = {
+      		listStyleType: 'none',
+      	}
+
       	const films = this.props.films;
       	const people = this.props.people;
       	const locations = this.props.locations;
@@ -39,32 +50,78 @@ export default class extends React.Component {
 
       	let propsArr = films.concat(people, locations, vehicles);
       	let featuredItem = propsArr[Math.floor(Math.random()*propsArr.length)];
-      	console.log(featuredItem);
+
+      	let featuredItemName;
 
       	let featuredItemDisplay= null;
 
       	if ('director' in featuredItem) { // film
-			featuredItemDisplay =  <p>{featuredItem.director}</p>
+      		featuredItemName = featuredItem.title + ' (Film)' ;
+			featuredItemDisplay =  
+			<ul>
+				<li><b>Film's Title:</b> {featuredItem.title}</li>
+				<li><b>Description:</b> {featuredItem.description}</li>
+				<li><b>Director:</b> {featuredItem.director}</li>
+				<li><b>Producer:</b> {featuredItem.producer}</li>
+				<li><b>Release Date:</b> {featuredItem.release_date}</li>
+				<li><b>Rotten Tomatoes Score:</b> {featuredItem.rt_score}%</li>
+			</ul>
 		}
 		else if ('gender' in featuredItem) { // people
-			featuredItemDisplay =  <p>{featuredItem.gender}</p>
+			featuredItemName = featuredItem.name + ' (Person)' ;
+			featuredItemDisplay =  
+			<ul>
+				<li><b>Name:</b> {featuredItem.name}</li>
+				<li><b>Gender:</b> {featuredItem.gender}</li>
+				<li><b>Age:</b> {featuredItem.age}</li>
+				<li><b>Eye Color:</b> {featuredItem.eye_color}</li>
+				<li><b>Hair Color:</b> {featuredItem.hair_color}</li>
+				<li><b>Films</b> {featuredItem.films}</li> 
+				<li><b>Species</b> {featuredItem.species}</li>
+			</ul>
 		}
 		else if ('climate' in featuredItem) { // location
-			featuredItemDisplay =  <p>{featuredItem.climate}</p>
+			featuredItemName = featuredItem.name + ' (Location)' ;
+			featuredItemDisplay =  
+			<ul>
+				<li><b>Name:</b> {featuredItem.name}</li>
+				<li><b>Climate:</b> {featuredItem.climate}</li>
+				<li><b>Terrain:</b> {featuredItem.terrain}</li>
+				<li><b>Surface Water:</b> {featuredItem.surface_water}</li>
+				<li><b>Residents:</b> {featuredItem.residents}</li>
+				<li><b>Films</b> {featuredItem.films}</li> 
+			</ul>
 		}
 		else if ('classification' in featuredItem) { // species
-			featuredItemDisplay =  <p>{featuredItem.pilot}</p>
+			featuredItemName = featuredItem.name + ' (Species)' ;
+			featuredItemDisplay =  
+			<ul>
+				<li><b>Name:</b> {featuredItem.name}</li>
+				<li><b>Classification:</b> {featuredItem.classification}</li>
+				<li><b>Eye Color(s):</b> {featuredItem.eye_colors}</li>
+				<li><b>Hair Color(s):</b> {featuredItem.hair_colors}</li>
+				<li><b>People:</b> {featuredItem.people}</li>
+				<li><b>Films</b> {featuredItem.films}</li> 
+			</ul>
 		}
 		else if ('pilot' in featuredItem) { // vehicles
-			featuredItemDisplay =  <p>{featuredItem.pilot}</p>
+			featuredItemName = featuredItem.name + ' (Vehicle)' ;
+			featuredItemDisplay = 
+			<ul>
+				<li><b>Name:</b> {featuredItem.name}</li>
+				<li><b>Description:</b> {featuredItem.description}</li>
+				<li><b>Vehicle Class(s):</b> {featuredItem.vehicle_class}</li>
+				<li><b>Length(s):</b> {featuredItem.length}</li>
+				<li><b>Pilot:</b> {featuredItem.pilot}</li>
+				<li><b>Films</b> {featuredItem.films}</li> 
+			</ul>
 		}
-	
         return (
 	    	<div>
 	    		<PageHead />
 	    		<Nav />
-	    		<div>
-	    			<h3>Featured Item</h3>
+	    		<div className='featured-item-div' style={featuredItemDivStyle, ulNoBullets}>
+	    			<h3>Featured Item: {featuredItemName}</h3>
 	    	
 	    			{featuredItemDisplay}
 	    	

@@ -1,16 +1,21 @@
-import Link from 'next/link'
+import Link from 'next/link';
 
 export default class Nav extends React.Component {
   render() {
   	let linkStyle = {
 		textAlign: 'left',
 		float: 'left',
-		paddingRight: '1em',
+		paddingRight: '2em',
+		paddingLeft: '1em',
+		verticalAlign: 'middle',
+		lineHeight: '30px',
   	};
 
   	let divStyle = {
   		paddingBottom: '2em',
-  		border: '2px solid #519657'
+  		border: '2px solid #519657',
+  		backgroundColor: '#F5F5F6',
+  		borderRadius: '25px',
   	};
     return (
 		<div style={divStyle}>
