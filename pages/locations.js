@@ -25,22 +25,12 @@ export default class extends React.Component {
         	<PageHead />
         	<Nav />
         	<div className='locations-list' style={tableStyle, divPosition}>
-        		<table className='data-table' style={divPosition, tableStyle}>
-        	    	<thead>
-        	          <tr>
-        	              <th className='data-table-head'>Name</th>
-        	          </tr>
-        	        </thead>
-        	        <tbody>
+        		
         	          {
         	            this.props.locations.map( (location, i) => (
-        	            	<tr key={i}>
-        	            	<td><a>{ location.name }</a></td>
-        	                </tr>
+        	            	<p key={i}>{ location.name }</p>
         	              ))
         	          }
-        	       </tbody>
-        	      </table>
         	      </div>
             </div>
         )
