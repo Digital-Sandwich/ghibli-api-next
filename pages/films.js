@@ -8,12 +8,18 @@ export default class Films extends React.Component {
 	constructor() {
     super();
     this.state = {
-      showInfo: false
-    }
+      showInfo: false,
+      currentFilmId: undefined,
+    };
   }
-  onClick(e){
-    e.preventDefault();
-    this.setState({showInfo: !this.state.showInfo})
+  onClick(){
+    this.setState({showInfo: !this.state.showInfo});
+  }
+  handleClick(i, event) {
+  	this.setState({currentFilmId: i});
+  	console.log('currentFilmId ' + this.state.currentFilmId);
+
+  	alert(i);
   }
 	static async getInitialProps () {
 	    const filmsRes = await axios.get('https://ghibliapi.herokuapp.com/films');
@@ -37,13 +43,13 @@ export default class Films extends React.Component {
         	<Nav />
         		<div className='films-list' style={tableStyle, divPosition}>
         	          {
-        	            this.props.films.map( (film, i) => (
-        	            	<p key={i} onClick={this.onClick.bind(this)}>{film.title}</p>
-        	              ))
+        	            this.props.films.map((film, i) => (
+        	            	<div key={i} onClick={this.onClick.bind(this), this.handleClick.bind(this, i)}>
+        	            		<h4>{film.title}</h4>
+        	            	</div>
+        	            ))
         	          }
-        	          {
-        	          	this.state.showInfo && <InfoCard films={this.props.films} / >
-        	          }
+        	          {this.state.showInfo && <InfoCard films={this.props.films} / >}
         	    </div>
             </div>
         )
