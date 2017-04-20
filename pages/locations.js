@@ -25,7 +25,6 @@ export default class extends React.Component {
         	<PageHead />
         	<Nav />
         	<div className='locations-list' style={tableStyle, divPosition}>
-        		
         	          {
         	            this.props.locations.map( (location, i) => (
         	            	<p key={i}>{ location.name }</p>

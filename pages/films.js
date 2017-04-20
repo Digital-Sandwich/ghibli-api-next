@@ -4,18 +4,6 @@ import PageHead from '../components/head';
 import Link from 'next/link';
 import Nav from '../components/nav';
 
-
-class InfoCard extends React.Component {
-  constructor() {
-    super()
-  }
-  render(){
-    return(
-      <div>I'm InfoCard</div>
-    )
-  }
-}
-
 export default class Films extends React.Component {
 	constructor() {
     super();
@@ -25,15 +13,11 @@ export default class Films extends React.Component {
   }
   onClick(e){
     e.preventDefault();
-    console.log('clicked');
     this.setState({showInfo: !this.state.showInfo})
   }
-
 	static async getInitialProps () {
 	    const filmsRes = await axios.get('https://ghibliapi.herokuapp.com/films');
-
 	    return {films: filmsRes.data,};
-	    
 	  }
       render() {
   	      	const tableStyle = {
@@ -51,21 +35,32 @@ export default class Films extends React.Component {
         	<div>
         	<PageHead />
         	<Nav />
-
-
-        	<div className='films-list' style={tableStyle, divPosition}>
-        		
+        		<div className='films-list' style={tableStyle, divPosition}>
         	          {
         	            this.props.films.map( (film, i) => (
         	            	<p key={i} onClick={this.onClick.bind(this)}>{film.title}</p>
         	              ))
         	          }
-
-        	          {this.state.showInfo && < InfoCard / >}
-        	      </div>
+        	          {
+        	          	this.state.showInfo && <InfoCard films={this.props.films} / >
+        	          }
+        	    </div>
             </div>
         )
       }
  }
 
+class InfoCard extends React.Component {
+  constructor() {
+    super();
+  }
+  render(){
+    return(
+    	<div>
+    		<p>I'm InfoCard</p>
+    		<p>{this.props.films[0].title}</p>
+    	</div>
+    )
+  }
+}
 
