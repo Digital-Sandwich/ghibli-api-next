@@ -5,6 +5,7 @@
 
 import React from 'react';
 import axios from 'axios';
+import Link from 'next/link';
 import PageHead from '../components/head';
 import Nav from '../components/nav';
 import FilmDiv from '../components/film-div';
@@ -12,7 +13,6 @@ import PeopleDiv from '../components/people-div';
 import LocationsDiv from '../components/locations-div';
 import SpeciesDiv from '../components/species-div';
 import VehiclesDiv from '../components/vehicles-div';
-import Link from 'next/link';
 
 export default class extends React.Component {
 	static async getInitialProps () {

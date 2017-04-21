@@ -4,69 +4,24 @@ import PageHead from '../components/head';
 import Link from 'next/link';
 import Nav from '../components/nav';
 
-export default class Films extends React.Component {
-	constructor() {
-    	super();
-    	this.state = {
-      		showInfo: false,
-      		currentFilmId: null,
-    	};
- 	}
-
-	onClick(i){
-    	this.setState({showInfo: !this.state.showInfo});
-		this.state.currentFilmId = i;
-	}
-
-	static async getInitialProps () {
-	    const filmsRes = await axios.get('https://ghibliapi.herokuapp.com/films');
-	    return {films: filmsRes.data};
-	  }
-
-	render() {
-		const tableStyle = {
-			backgroundColor: '#E1E2E1',
-			border: '1px solid #F5F5F6',
-			textAlign: 'center',
-		};
-
-		const divPosition = {
-			marginLeft: '0 auto',
-			marginRight: '0 auto',
-			width: '200px',
-		};
-
-        return (
-        	<div>
-        	<PageHead />
-        	<Nav />
-        		<div className='films-list' style={tableStyle, divPosition}>
-        	          {
-        	            this.props.films.map((film, i) => (
-        	            	<div key={i} onClick={this.onClick.bind(this, i)}>
-        	            		<h4>{film.title}</h4>
-        	            	</div>
-        	            ))
-        	          }
-        	          {this.state.showInfo && <InfoCard films={this.props.films} currentFilmId={this.state.currentFilmId} / >}
-        	    </div>
-            </div>
-        )
-      }
- }
-
 class InfoCard extends React.Component {
   constructor() {
     super();
   }
   render(){
 	const infoCardStyle = {
-		float: 'right',
-		backgroundColor: '#E1E2E1',
+		postiton: 'fixed',
+		top: '0px',
+		width: '100vw',
+		listStyleType: 'none',
+		backgroundColor: '#a5d6a7',
 		border: '1px solid #F5F5F6',
-		textAlign: 'left',
-	 };
-	 
+		textAlign: 'center',
+		verticalAlign: 'middle',
+		lineHeight: '1.7em',
+		borderRadius: '25px',
+		height: 'auto',
+	};
     return(
     	<div className='infoCard' style={infoCardStyle}>
     		<li><b>Title:</b> {this.props.films[this.props.currentFilmId].title}</li>
@@ -79,4 +34,62 @@ class InfoCard extends React.Component {
     )
   }
 }
-
+export default class Films extends React.Component {
+	constructor() {
+    	super();
+    	this.state = {
+      		showInfo: false,
+      		currentFilmId: null,
+    	};
+ 	}
+	onClick(i){
+    	this.setState({showInfo: !this.state.showInfo});
+		this.state.currentFilmId = i;
+	}
+	static async getInitialProps () {
+	    const filmsRes = await axios.get('https://ghibliapi.herokuapp.com/films');
+	    return {films: filmsRes.data};
+	}
+	render() {
+		const tableStyle = {
+			backgroundColor: '#E1E2E1',
+			border: '1px solid #F5F5F6',
+			textAlign: 'center',
+		};
+		const filmsListStyle = {
+			marginLeft: '0 auto',
+			marginRight: '0 auto',
+			width: '200px',
+			position: 'absolute,'
+		};
+		const filmItemStyle = {
+			top: '0px',
+			width: '100vw',
+			backgroundColor: '#E1E2E1',
+			border: '1px solid #F5F5F6',
+			textAlign: 'center',
+			verticalAlign: 'middle',
+			lineHeight: '30px',
+			borderRadius: '25px',
+			height: '5em'
+		};
+        return (
+        	<div>
+        	<PageHead />
+        	<Nav />
+        		<div className='films-list' style={tableStyle, filmsListStyle}>
+        	          {
+        	            this.props.films.map((film, i) => (
+        	            	<div className='film-item' style={filmItemStyle} key={i} onClick={this.onClick.bind(this, i)}>
+        	            		<h4>{film.title}</h4>
+        	            	</div>
+        	            ))
+        	          }
+        	          {
+        	          	this.state.showInfo && <InfoCard films={this.props.films} currentFilmId={this.state.currentFilmId} / >
+        	          }
+        	    </div>
+            </div>
+        )
+    }
+ }

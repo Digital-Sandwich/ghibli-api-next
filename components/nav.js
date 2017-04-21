@@ -2,10 +2,27 @@ import Link from 'next/link';
 
 export default class Nav extends React.Component {
   render() {
-  	let linkStyle = {
+  	let linkStyleLeft = {
 		textAlign: 'left',
 		float: 'left',
-		paddingRight: '2em',
+		paddingRight: '1em',
+		paddingLeft: '1em',
+		verticalAlign: 'middle',
+		lineHeight: '30px',
+  	};
+
+  	let appTitleStyle = {
+  		textAlign: 'center',
+  		width: '50%',
+  		margin: '0 auto',
+		verticalAlign: 'middle',
+		lineHeight: '30px',
+  	};
+
+  	let linkStyleRight = {
+  		textAlign: 'right',
+		float: 'right',
+		paddingRight: '1em',
 		paddingLeft: '1em',
 		verticalAlign: 'middle',
 		lineHeight: '30px',
@@ -19,33 +36,43 @@ export default class Nav extends React.Component {
   	};
     return (
 		<div style={divStyle}>
-			<div className='nav-link' style={linkStyle}>
+			<div className='nav-link' style={linkStyleLeft}>
 	    	<Link href='/'>
 	      		<a>Home</a>
 	    	</Link>
 	    	</div>
 
-			<div className='nav-link' style={linkStyle}>
+			<div className='nav-link' style={linkStyleLeft}>
 	    	<Link href='/films'>
 	      		<a>Films</a>
 	    	</Link>
 	    	</div>
 
-			<div className='nav-link' style={linkStyle}>
+			<div className='nav-link' style={linkStyleLeft}>
 	    	<Link href='/people'>
 	      		<a>People</a>
 	    	</Link>
 	    	</div>
 
-			<div className='nav-link' style={linkStyle}>
+			<div className='nav-link' style={linkStyleLeft}>
 	    	<Link href='/locations'>
 	      		<a>Location</a>
 	    	</Link>
 	    	</div>
 
-			<div className='nav-link' style={linkStyle}>
+			<div className='nav-link' style={linkStyleLeft}>
 	    	<Link href='/vehicles'>
 	      		<a>Vehicles</a>
+	    	</Link>
+	    	</div>
+
+    		<div className='appTitle' style={appTitleStyle}>
+    	  		<a>Ghibli API Reader</a>
+    		</div>
+
+	    	<div className='nav-link' style={linkStyleRight}>
+	    	<Link href='https://ghibliapi.herokuapp.com/'>
+	      		<a>Check out the Studio Ghibli API!</a>
 	    	</Link>
 	    	</div>
 	  </div>
