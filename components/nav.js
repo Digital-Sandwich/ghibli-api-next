@@ -1,3 +1,4 @@
+import React from 'react'
 import Link from 'next/link';
 
 export default class Nav extends React.Component {
@@ -10,15 +11,6 @@ export default class Nav extends React.Component {
 		verticalAlign: 'middle',
 		lineHeight: '30px',
   	};
-
-  	let appTitleStyle = {
-  		textAlign: 'center',
-  		width: '50%',
-  		margin: '0 auto',
-		verticalAlign: 'middle',
-		lineHeight: '30px',
-  	};
-
   	let linkStyleRight = {
   		textAlign: 'right',
 		float: 'right',
@@ -27,7 +19,6 @@ export default class Nav extends React.Component {
 		verticalAlign: 'middle',
 		lineHeight: '30px',
   	};
-
   	let divStyle = {
   		paddingBottom: '2em',
   		border: '2px solid #519657',
@@ -65,10 +56,6 @@ export default class Nav extends React.Component {
 	      		<a>Vehicles</a>
 	    	</Link>
 	    	</div>
-
-    		<div className='appTitle' style={appTitleStyle}>
-    	  		<a>Ghibli API Reader</a>
-    		</div>
 
 	    	<div className='nav-link' style={linkStyleRight}>
 	    	<Link href='https://ghibliapi.herokuapp.com/'>

@@ -8,6 +8,7 @@ import axios from 'axios';
 import Link from 'next/link';
 import PageHead from '../components/head';
 import Nav from '../components/nav';
+import AppTitle from '../components/app-title';
 import FilmDiv from '../components/film-div';
 import PeopleDiv from '../components/people-div';
 import LocationsDiv from '../components/locations-div';
@@ -119,6 +120,8 @@ export default class extends React.Component {
 	    		<PageHead />
 
 	    		<Nav />
+	    		<AppTitle />
+
 
 	    		<div className='featured-item-div' style={featuredItemDivStyle}>
 	    		<h3>Featured Item: <em>{featuredItemName}</em></h3>
