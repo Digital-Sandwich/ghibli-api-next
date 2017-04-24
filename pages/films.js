@@ -11,7 +11,7 @@ class InfoCard extends React.Component {
   render(){
 	const infoCardStyle = {
 		postiton: 'fixed',
-		top: '0px',
+		top: '0',
 		width: '100vw',
 		listStyleType: 'none',
 		backgroundColor: '#a5d6a7',
@@ -19,7 +19,7 @@ class InfoCard extends React.Component {
 		textAlign: 'center',
 		verticalAlign: 'middle',
 		lineHeight: '1.7em',
-		borderRadius: '25px',
+	borderRadius: '25px',
 		height: 'auto',
 	};
     return(
@@ -78,16 +78,16 @@ export default class Films extends React.Component {
         	<PageHead />
         	<Nav />
         		<div className='films-list' style={tableStyle, filmsListStyle}>
-        	          {
-        	            this.props.films.map((film, i) => (
-        	            	<div className='film-item' style={filmItemStyle} key={i} onClick={this.onClick.bind(this, i)}>
-        	            		<h4>{film.title}</h4>
-        	            	</div>
-        	            ))
-        	          }
-        	          {
-        	          	this.state.showInfo && <InfoCard films={this.props.films} currentFilmId={this.state.currentFilmId} / >
-        	          }
+					{
+						this.state.showInfo && <InfoCard films={this.props.films} currentFilmId={this.state.currentFilmId} />
+					}
+					{
+						this.props.films.map((film, i) => (
+							<div className='film-item' style={filmItemStyle} key={i} onClick={this.onClick.bind(this, i)}>
+								<h4>{film.title}</h4>
+							</div>
+						))
+					}
         	    </div>
             </div>
         )

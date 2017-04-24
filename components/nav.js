@@ -47,7 +47,7 @@ export default class Nav extends React.Component {
 
 			<div className='nav-link' style={linkStyleLeft}>
 	    	<Link href='/locations'>
-	      		<a>Location</a>
+	      		<a>Locations</a>
 	    	</Link>
 	    	</div>
 

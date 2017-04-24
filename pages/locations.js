@@ -4,36 +4,92 @@ import PageHead from '../components/head';
 import Link from 'next/link';
 import Nav from '../components/nav';
 
-export default class extends React.Component {
+class InfoCard extends React.Component {
+  constructor() {
+    super();
+  }
+  render(){
+	const infoCardStyle = {
+		postiton: 'fixed',
+		top: '0',
+		width: '100vw',
+		listStyleType: 'none',
+		backgroundColor: '#a5d6a7',
+		border: '1px solid #F5F5F6',
+		textAlign: 'center',
+		verticalAlign: 'middle',
+		lineHeight: '1.7em',
+		borderRadius: '25px',
+		height: 'auto',
+	};
+    return(
+    	<div className='infoCard' style={infoCardStyle}>
+    		<li><b>Name:</b> {this.props.locations[this.props.currentLocationId].name}</li>
+    		<li><b>Climate:</b> {this.props.locations[this.props.currentLocationId].climate}</li>
+    		<li><b>Terrain:</b> {this.props.locations[this.props.currentLocationId].terrain}</li>
+    		<li><b>Surface Water:</b> {this.props.locations[this.props.currentLocationId].surface_water}</li>
+    		<li><b>Residents:</b> {this.props.locations[this.props.currentLocationId].residents}</li>
+    		<li><b>Films:</b> {this.props.locations[this.props.currentLocationId].films}</li>
+    	</div>
+    )
+  }
+}
+export default class Locations extends React.Component {
+	constructor() {
+    	super();
+    	this.state = {
+      		showInfo: false,
+      		currentLocationId: null,
+    	};
+ 	}
+	onClick(i){
+    	this.setState({showInfo: !this.state.showInfo});
+		this.state.currentLocationId = i;
+	}
 	static async getInitialProps () {
 	    const locationsRes = await axios.get('https://ghibliapi.herokuapp.com/locations');
-	    return {locations: locationsRes.data,};
-	  }
-      render() {
-	      	const tableStyle = {
-		  		backgroundColor: '#E1E2E1',
-		  		border: '1px solid #F5F5F6',
-		  		textAlign: 'center',
-	      	 };
-	      	 const divPosition = {
-		      	marginLeft: '0 auto',
-		      	marginRight: '0 auto',
-		      	width: '200px',
-	      	  };
+	    return {locations: locationsRes.data};
+	}
+	render() {
+		const tableStyle = {
+			backgroundColor: '#E1E2E1',
+			border: '1px solid #F5F5F6',
+			textAlign: 'center',
+		};
+		const locationsListStyle = {
+			marginLeft: '0 auto',
+			marginRight: '0 auto',
+			width: '200px',
+			position: 'absolute,'
+		};
+		const locationItemStyle = {
+			top: '0px',
+			width: '100vw',
+			backgroundColor: '#E1E2E1',
+			border: '1px solid #F5F5F6',
+			textAlign: 'center',
+			verticalAlign: 'middle',
+			lineHeight: '30px',
+			borderRadius: '25px',
+			height: '5em'
+		};
         return (
         	<div>
         	<PageHead />
         	<Nav />
-        	<div className='locations-list' style={tableStyle, divPosition}>
-        	          {
-        	            this.props.locations.map( (location, i) => (
-        	            	<p key={i}>{ location.name }</p>
-        	              ))
-        	          }
-        	      </div>
+        		<div className='locations-list' style={tableStyle, locationsListStyle}>
+					{
+						this.state.showInfo && <InfoCard locations={this.props.locations} currentLocationId={this.state.currentLocationId} />
+					}
+					{
+						this.props.locations.map((location, i) => (
+							<div className='location-item' style={locationItemStyle} key={i} onClick={this.onClick.bind(this, i)}>
+								<h4>{location.name}</h4>
+							</div>
+						))
+					}
+        	    </div>
             </div>
         )
-      }
+    }
  }
-
-

@@ -56,19 +56,19 @@ export default class extends React.Component {
       	if ('director' in featuredItem) {
       		featuredItemName = featuredItem.title + ' (Film)' ;
 			featuredItemDisplay =  
-			<ul>
+			<div>
 				<li><b>Title:</b> {featuredItem.title}</li>
 				<li><b>Description:</b> {featuredItem.description}</li>
 				<li><b>Director:</b> {featuredItem.director}</li>
 				<li><b>Producer:</b> {featuredItem.producer}</li>
 				<li><b>Release Date:</b> {featuredItem.release_date}</li>
 				<li><b>Rotten Tomatoes Score:</b> {featuredItem.rt_score}%</li>
-			</ul>
+			</div>
 		}
 		else if ('gender' in featuredItem) {
 			featuredItemName = featuredItem.name + ' (Person)' ;
 			featuredItemDisplay =  
-			<ul>
+			<div>
 				<li><b>Name:</b> {featuredItem.name}</li>
 				<li><b>Gender:</b> {featuredItem.gender}</li>
 				<li><b>Age:</b> {featuredItem.age}</li>
@@ -76,43 +76,43 @@ export default class extends React.Component {
 				<li><b>Hair Color:</b> {featuredItem.hair_color}</li>
 				<li><b>Films:</b> {featuredItem.films}</li> 
 				<li><b>Species:</b> {featuredItem.species}</li>
-			</ul>
+			</div>
 		}
 		else if ('climate' in featuredItem) {
 			featuredItemName = featuredItem.name + ' (Location)' ;
 			featuredItemDisplay =  
-			<ul>
+			<div>
 				<li><b>Name:</b> {featuredItem.name}</li>
 				<li><b>Climate:</b> {featuredItem.climate}</li>
 				<li><b>Terrain:</b> {featuredItem.terrain}</li>
 				<li><b>Surface Water:</b> {featuredItem.surface_water}</li>
 				<li><b>Residents:</b> {featuredItem.residents}</li>
-				<li><b>Films:</b> {featuredItem.films}</li> 
-			</ul>
+				<li><b>Films:</b> {featuredItem.films}</li>
+			</div>
 		}
 		else if ('classification' in featuredItem) {
 			featuredItemName = featuredItem.name + ' (Species)' ;
 			featuredItemDisplay =  
-			<ul>
+			<div>
 				<li><b>Name:</b> {featuredItem.name}</li>
 				<li><b>Classification:</b> {featuredItem.classification}</li>
 				<li><b>Eye Color(s):</b> {featuredItem.eye_colors}</li>
 				<li><b>Hair Color(s):</b> {featuredItem.hair_colors}</li>
 				<li><b>People:</b> {featuredItem.people}</li>
-				<li><b>Films:</b> {featuredItem.films}</li> 
-			</ul>
+				<li><b>Films:</b> {featuredItem.films}</li>
+			</div>
 		}
 		else if ('pilot' in featuredItem) {
 			featuredItemName = featuredItem.name + ' (Vehicle)' ;
 			featuredItemDisplay = 
-			<ul>
+			<div>
 				<li><b>Name:</b> {featuredItem.name}</li>
 				<li><b>Description:</b> {featuredItem.description}</li>
 				<li><b>Vehicle Class(s):</b> {featuredItem.vehicle_class}</li>
 				<li><b>Length(s):</b> {featuredItem.length}</li>
 				<li><b>Pilot:</b> {featuredItem.pilot}</li>
-				<li><b>Films:</b> {featuredItem.films}</li> 
-			</ul>
+				<li><b>Films:</b> {featuredItem.films}</li>
+			</div>
 		}
         return (
 	    	<div>
