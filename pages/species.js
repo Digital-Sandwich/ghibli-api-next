@@ -43,8 +43,7 @@ export default class Species extends React.Component {
     	};
  	}
 	onClick(i){
-    	this.setState({showInfo: !this.state.showInfo});
-		this.state.currentSpeciesId = i;
+    	this.setState({showInfo: !this.state.showInfo, currentSpeciesId: i});
 	}
 	static async getInitialProps () {
 	    const speciesRes = await axios.get('https://ghibliapi.herokuapp.com/species');

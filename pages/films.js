@@ -19,7 +19,7 @@ class InfoCard extends React.Component {
 		textAlign: 'center',
 		verticalAlign: 'middle',
 		lineHeight: '1.7em',
-	borderRadius: '25px',
+		borderRadius: '25px',
 		height: 'auto',
 	};
     return(
@@ -43,8 +43,7 @@ export default class Films extends React.Component {
     	};
  	}
 	onClick(i){
-    	this.setState({showInfo: !this.state.showInfo});
-		this.state.currentFilmId = i;
+    	this.setState({showInfo: !this.state.showInfo, currentFilmId: i});
 	}
 	static async getInitialProps () {
 	    const filmsRes = await axios.get('https://ghibliapi.herokuapp.com/films');

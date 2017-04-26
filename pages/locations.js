@@ -43,8 +43,7 @@ export default class Locations extends React.Component {
     	};
  	}
 	onClick(i){
-    	this.setState({showInfo: !this.state.showInfo});
-		this.state.currentLocationId = i;
+    	this.setState({showInfo: !this.state.showInfo, currentLocationId: i});
 	}
 	static async getInitialProps () {
 	    const locationsRes = await axios.get('https://ghibliapi.herokuapp.com/locations');

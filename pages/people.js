@@ -44,8 +44,7 @@ export default class People extends React.Component {
     	};
  	}
 	onClick(i){
-    	this.setState({showInfo: !this.state.showInfo});
-		this.state.currentPersonId = i;
+    	this.setState({showInfo: !this.state.showInfo, currentPersonId: i});
 	}
 	static async getInitialProps () {
 	    const peopleRes = await axios.get('https://ghibliapi.herokuapp.com/people');

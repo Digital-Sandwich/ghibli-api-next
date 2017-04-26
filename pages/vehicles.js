@@ -43,8 +43,7 @@ export default class Vehicles extends React.Component {
     	};
  	}
 	onClick(i){
-    	this.setState({showInfo: !this.state.showInfo});
-		this.state.currentVehicleId = i;
+    	this.setState({showInfo: !this.state.showInfo, currentVehicleId: i});
 	}
 	static async getInitialProps () {
 	    const vehiclesRes = await axios.get('https://ghibliapi.herokuapp.com/vehicles');
