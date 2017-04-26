@@ -3,37 +3,8 @@ import axios from 'axios';
 import PageHead from '../components/head';
 import Link from 'next/link';
 import Nav from '../components/nav';
+import InfoCard from '../components/info-card';
 
-class InfoCard extends React.Component {
-  constructor() {
-    super();
-  }
-  render(){
-	const infoCardStyle = {
-		postiton: 'fixed',
-		top: '0',
-		width: '100vw',
-		listStyleType: 'none',
-		backgroundColor: '#a5d6a7',
-		border: '1px solid #F5F5F6',
-		textAlign: 'center',
-		verticalAlign: 'middle',
-		lineHeight: '1.7em',
-	borderRadius: '25px',
-		height: 'auto',
-	};
-    return(
-    	<div className='infoCard' style={infoCardStyle}>
-    		<li><b>Title:</b> {this.props.films[this.props.currentFilmId].title}</li>
-    		<li><b>Description:</b> {this.props.films[this.props.currentFilmId].description}</li>
-    		<li><b>Director:</b> {this.props.films[this.props.currentFilmId].director}</li>
-    		<li><b>Producer:</b> {this.props.films[this.props.currentFilmId].producer}</li>
-    		<li><b>Release Date:</b> {this.props.films[this.props.currentFilmId].release_date}</li>
-    		<li><b>Rotten Tomatoes Score:</b> {this.props.films[this.props.currentFilmId].rt_score}%</li>
-    	</div>
-    )
-  }
-}
 export default class Films extends React.Component {
 	constructor() {
     	super();
@@ -43,9 +14,9 @@ export default class Films extends React.Component {
     	};
  	}
 	onClick(i){
-    	this.setState({showInfo: !this.state.showInfo});
-		this.state.currentFilmId = i;
-	}
+    	this.setState({showInfo: !this.state.showInfo, currentFilmId: i});
+    	console.log(this.state.currentFilmId)
+    }
 	static async getInitialProps () {
 	    const filmsRes = await axios.get('https://ghibliapi.herokuapp.com/films');
 	    return {films: filmsRes.data};

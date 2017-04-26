@@ -1,8 +1,3 @@
-/*TO DO
--display all properties of featured item
--display properties of item when clicked
-/TO DO */
-
 import React from 'react';
 import axios from 'axios';
 import Link from 'next/link';
@@ -15,7 +10,7 @@ import LocationsDiv from '../components/locations-div';
 import SpeciesDiv from '../components/species-div';
 import VehiclesDiv from '../components/vehicles-div';
 
-export default class extends React.Component {
+export default class Index extends React.Component {
 	static async getInitialProps () {
 	    const filmsRes = await axios.get('https://ghibliapi.herokuapp.com/films');
 	    const peopleRes = await axios.get('https://ghibliapi.herokuapp.com/people');
@@ -51,11 +46,11 @@ export default class extends React.Component {
 
       	let featuredItemName;
 
-      	let featuredItemDisplay = null;
+      	let featuredItemRender = null;
 
       	if ('director' in featuredItem) {
       		featuredItemName = featuredItem.title + ' (Film)' ;
-			featuredItemDisplay =  
+			featuredItemRender =  
 			<div>
 				<li><b>Title:</b> {featuredItem.title}</li>
 				<li><b>Description:</b> {featuredItem.description}</li>
@@ -67,7 +62,7 @@ export default class extends React.Component {
 		}
 		else if ('gender' in featuredItem) {
 			featuredItemName = featuredItem.name + ' (Person)' ;
-			featuredItemDisplay =  
+			featuredItemRender =  
 			<div>
 				<li><b>Name:</b> {featuredItem.name}</li>
 				<li><b>Gender:</b> {featuredItem.gender}</li>
@@ -80,7 +75,7 @@ export default class extends React.Component {
 		}
 		else if ('climate' in featuredItem) {
 			featuredItemName = featuredItem.name + ' (Location)' ;
-			featuredItemDisplay =  
+			featuredItemRender =  
 			<div>
 				<li><b>Name:</b> {featuredItem.name}</li>
 				<li><b>Climate:</b> {featuredItem.climate}</li>
@@ -92,7 +87,7 @@ export default class extends React.Component {
 		}
 		else if ('classification' in featuredItem) {
 			featuredItemName = featuredItem.name + ' (Species)' ;
-			featuredItemDisplay =  
+			featuredItemRender =  
 			<div>
 				<li><b>Name:</b> {featuredItem.name}</li>
 				<li><b>Classification:</b> {featuredItem.classification}</li>
@@ -104,7 +99,7 @@ export default class extends React.Component {
 		}
 		else if ('pilot' in featuredItem) {
 			featuredItemName = featuredItem.name + ' (Vehicle)' ;
-			featuredItemDisplay = 
+			featuredItemRender = 
 			<div>
 				<li><b>Name:</b> {featuredItem.name}</li>
 				<li><b>Description:</b> {featuredItem.description}</li>
@@ -126,7 +121,7 @@ export default class extends React.Component {
 	    		<div className='featured-item-div' style={featuredItemDivStyle}>
 	    		<h3>Featured Item: <em>{featuredItemName}</em></h3>
 	    	
-	    			{featuredItemDisplay}
+	    			{featuredItemRender}
 	    	
 	    		</div> 
 
